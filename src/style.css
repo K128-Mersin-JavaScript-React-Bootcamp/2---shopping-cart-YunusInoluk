@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "Roboto", sans-serif;
+}
+body {
+  background-color: blanchedalmond;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  height: 3rem;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.logo {
+  font-size: 2rem;
+  margin-right: 3rem;
+  font-weight: 900;
+}
+.menu-link {
+  padding-right: 2rem;
+}
+nav .search {
+  border: 2px solid white;
+  padding: 0.2rem 0.5rem;
+}
+.search-input {
+  height: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.search-input:focus {
+  outline: none;
+}
+.search-button {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+}
+.fa-search {
+  color: white;
+}
+nav .left {
+  display: flex;
+  align-items: center;
+}
+nav .right {
+  display: flex;
+  color: white;
+  height: 100%;
+  align-items: center;
+}
+nav .right .cart {
+  margin-right: 1rem;
+}
+nav .right .cart .fa-shopping-bag {
+  padding-right: 0.5rem;
+  font-size: 1.2rem;
+}
+nav .right .cart .cart-item-count {
+  font-size: 0.9rem;
+}
