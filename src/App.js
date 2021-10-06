@@ -5,6 +5,7 @@ import Shop from "./pages/Shop";
 import Stores from "./pages/Stores";
 import About from "./pages/About";
 import Login from "./pages/Login";
+import "antd/dist/antd.css";
 function App() {
   return (
     <Router>

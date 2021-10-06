@@ -15,17 +15,17 @@ export default class SimpleSlider extends Component {
     return (
       <div>
         <Slider {...settings}>
-          <div>
-            <img alt="" src={"https://picsum.photos/1920/700?random=1"} />
+          <div className="slider-img">
+            <img alt="" src={"https://picsum.photos/1500/700?random=1"} />
           </div>
-          <div>
-            <img alt="" src={"https://picsum.photos/1920/700?random=2"} />
+          <div className="slider-img">
+            <img alt="" src={"https://picsum.photos/1500/700?random=2"} />
           </div>
-          <div>
-            <img alt="" src={"https://picsum.photos/1920/700?random=3"} />
+          <div className="slider-img">
+            <img alt="" src={"https://picsum.photos/1500/700?random=3"} />
           </div>
-          <div>
-            <img alt="" src={"https://picsum.photos/1920/700?random=4"} />
+          <div className="slider-img">
+            <img alt="" src={"https://picsum.photos/1500/700?random=4"} />
           </div>
         </Slider>
       </div>
