@@ -92,6 +92,11 @@ nav .right .cart .cart-item-count {
   max-width: 20rem;
   background-color: #fff;
   padding: 2rem;
+  border-radius: 0.5rem;
+}
+.card:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
 }
 .card img {
   text-align: center;
