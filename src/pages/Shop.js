@@ -1,8 +1,9 @@
 import { tsCallSignatureDeclaration } from "@babel/types";
-import { Layout, List, Checkbox } from "antd";
-
+import { Layout, List, Checkbox, Select } from "antd";
 import { useEffect, useState } from "react";
 const { Content, Sider } = Layout;
+const { Option } = Select;
+
 export default function Shop() {
   const [products, setProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
@@ -52,10 +53,29 @@ export default function Shop() {
       );
       console.log("Done");
     }
-    return defaultProductList;
+    return handleDataSort(defaultProductList);
   };
   const handleCheckedItem = (categoryName) => {
     return filter[categoryName];
+  };
+  const handleClearFilters = () => {
+    setFilter({});
+    setIsAllFiltersCleared(true);
+  };
+  const handleDataSort = (data) => {
+    if (selectedSort === "mostPopular") {
+      return data.sort((a, b) => (a.rating.rate > b.rating.rate ? -1 : 1));
+    } else if (selectedSort === "leastPopular") {
+      return data.sort((a, b) => (a.rating.rate > b.rating.rate ? 1 : -1));
+    } else if (selectedSort === "highPrice") {
+      return data.sort((a, b) => (a.price > b.price ? -1 : 1));
+    } else if (selectedSort === "lowPrice") {
+      return data.sort((a, b) => (a.price > b.price ? 1 : -1));
+    }
+  };
+  const handleSelect = (selected) => {
+    console.log(selected);
+    setSelectedSort(selected);
   };
 
   return (
@@ -73,6 +93,7 @@ export default function Shop() {
                   backgroundColor: "transparent",
                   cursor: "pointer",
                 }}
+                onClick={handleClearFilters}
               >
                 Clear filters
               </button>
@@ -95,6 +116,21 @@ export default function Shop() {
         />
       </Sider>
       <Content style={{ padding: "3rem" }}>
+        <div className="content-header">
+          <Select
+            defaultValue="mostPopular"
+            style={{ width: 160 }}
+            onChange={handleSelect}
+          >
+            <Option value="mostPopular">Most Popular</Option>
+            <Option value="leastPopular">Least Popular</Option>
+            <Option value="highPrice">High Price</Option>
+            <Option value="lowPrice">Low Price</Option>
+          </Select>
+          <h4 style={{ marginTop: "0.5rem" }}>
+            Showing {handleFilterData().length} products
+          </h4>
+        </div>
         <List
           grid={{
             gutter: 16,
