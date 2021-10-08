@@ -6,6 +6,7 @@ import Stores from "./pages/Stores";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import "antd/dist/antd.css";
+import Product from "./pages/Product";
 function App() {
   return (
     <Router>
@@ -67,6 +68,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/product">
+            <Product />
           </Route>
         </Switch>
       </div>

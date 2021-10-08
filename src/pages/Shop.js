@@ -1,21 +1,23 @@
-import { tsCallSignatureDeclaration } from "@babel/types";
 import { Layout, List, Checkbox, Select } from "antd";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+
 const { Content, Sider } = Layout;
 const { Option } = Select;
 
 export default function Shop() {
+  let history = useHistory();
   const [products, setProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [isAllFiltersCleared, setIsAllFiltersCleared] = useState(true);
   const [filter, setFilter] = useState({});
   const [selectedSort, setSelectedSort] = useState("mostPopular");
-
   useEffect(() => {
-    fetch("https://api.npoint.io/2443c7a7d9e0b37aec99/products")
+    fetch("http://localhost:4000/products")
       .then((res) => res.json())
       .then((data) => handleData(data));
   }, []);
+
   const handleData = (data) => {
     console.log(data);
     setProducts(data);
@@ -139,7 +141,14 @@ export default function Shop() {
           dataSource={handleFilterData()}
           renderItem={(item) => (
             <List.Item>
-              <div className="card">
+              <div
+                className="card"
+                onClick={() =>
+                  history.push("/product", {
+                    item: item,
+                  })
+                }
+              >
                 <img alt="example" src={item.image} />
                 <h3>{item.title}</h3>
                 <span style={{ marginRight: "20px" }}>
