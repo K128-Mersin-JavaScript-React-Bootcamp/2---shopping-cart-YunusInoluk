@@ -7,7 +7,10 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import "antd/dist/antd.css";
 import Product from "./pages/Product";
+import { useCart } from "./contexts/cartContext";
+import Cart from "./pages/Cart";
 function App() {
+  const { items } = useCart();
   return (
     <Router>
       <div>
@@ -44,8 +47,10 @@ function App() {
           </div>
           <div className="right">
             <div className="cart">
-              <i className="fas fa-shopping-bag"></i>
-              <span className="cart-item-count">3</span>
+              <Link to="/cart">
+                <i className="fas fa-shopping-bag"></i>
+                <span className="cart-item-count">({items.length})</span>
+              </Link>
             </div>
             <Link className="menu-link" to="/login">
               Login
@@ -71,6 +76,9 @@ function App() {
           </Route>
           <Route path="/product">
             <Product />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
         </Switch>
       </div>

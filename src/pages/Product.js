@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useLocation } from "react-router";
-
+import { useCart } from "../contexts/cartContext";
 export default function Product(props) {
   const location = useLocation();
   const product = location.state.item;
   const [amount, setAmount] = useState(1);
-  console.log(product);
+  const { addToCart, items } = useCart();
+  const findCartItem = items.find((item) => item.id === product.id);
   const handleAmount = (e) => {
     if (e === "incr") {
       setAmount(amount + 1);
@@ -29,7 +30,12 @@ export default function Product(props) {
           </div>
 
           <h4 className="product-reviews">Reviews: {product.rating.count}</h4>
-          <button className="product-btn">Add to Cart</button>
+          <button
+            className="product-btn"
+            onClick={() => addToCart(product, findCartItem)}
+          >
+            {findCartItem ? "Remove from Cart" : "Add to Cart"}
+          </button>
           <div className="product-amount">
             <button onClick={() => handleAmount("decr")}>-</button>
             <span>{amount}</span>

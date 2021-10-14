@@ -125,7 +125,10 @@ nav .right .cart .cart-item-count {
   background-color: #fff;
   border-radius: 1rem;
 }
-
+.product-image {
+  display: flex;
+  align-items: center;
+}
 .product-property {
   padding: 0 5rem;
 }
@@ -133,7 +136,7 @@ nav .right .cart .cart-item-count {
   font-size: 1.5rem;
 }
 .product-name {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .product-reviews {
   text-align: end;
@@ -169,4 +172,18 @@ nav .right .cart .cart-item-count {
   padding: 0.5rem 1.1rem;
   border: 4px solid burlywood;
   border-radius: 0.7rem;
+}
+tbody {
+  width: 100%;
+}
+td {
+  width: 50%;
+}
+.remove-cart {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  font-weight: 700;
+  cursor: pointer;
 }
